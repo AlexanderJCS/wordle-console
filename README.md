@@ -18,7 +18,7 @@ How to configure board settings:
 
 How to play:
 1. Play like how you would play any wordle game. How to play wordle: https://www.nytimes.com/games/wordle/index.html
-
+2. At the end of a game, there will be a grid of emojis you can copy/paste to share the round.
 
 Credit to wordle for the idea. This is just a clone of the game:
 https://www.nytimes.com/games/wordle/index.html

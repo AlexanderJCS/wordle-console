@@ -7,12 +7,12 @@ How to setup:
 3. Download dependencies (pip install colorama pyenchant)
 4. Run main.py
 
-How to configure solution words:
+How to configure solution words: (not required to play)
 1. Open solution_words.json in a text editor.
 2. Create a key of the length of the words that you will be using, if it is not already created.
 3. Create or edit a list of words of that length
 
-How to configure board settings:
+How to configure board settings: (not required to play)
 1. Open settings.json in a text editor
 2. Change the width or height of the board as you desire. Make sure there is a key for the number you input in solution_words, or else the program will not run correctly.
 

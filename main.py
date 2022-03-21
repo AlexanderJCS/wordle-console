@@ -38,7 +38,7 @@ class Game:
                 self.solution_word = random.choice(ascii_lowercase)
 
         except KeyError:
-            input(f"Invalid key for {SOLUTION_FILE}. Press enter to close. ")
+            input(f"Invalid key for {SOLUTION_FILE}. Is the width correct? Press enter to close. ")
             exit()
 
         self.correct_places = set()
@@ -86,32 +86,38 @@ class Game:
                 self.board[i] = list(user_word)
                 break
 
-    def print_board(self):
-        # Print the board
+    def print_board(self):  # Print the board
         print()
+
         for word in self.board:
-            for i, solution_letter in enumerate(self.solution_word):
-                letter = word[i]
+            solution_word_list = list(self.solution_word)
 
-                if solution_letter == letter:
-                    color_fore = Fore.GREEN
+            for i, letter in enumerate(word):
+                if letter in solution_word_list:
+                    if solution_word_list[i] == letter:  # If the letter is in the correct place
+                        self.correct_places.add(letter)
 
-                    self.correct_places.add(letter)
-                    if letter in self.incorrect_places:
-                        self.incorrect_places.remove(letter)
+                        if letter in self.incorrect_places:
+                            self.incorrect_places.remove(letter)
 
-                elif letter in self.solution_word:
-                    color_fore = Fore.YELLOW
+                        color_fore = Fore.GREEN
 
-                    if letter not in self.correct_places:
-                        self.incorrect_places.add(letter)
+                    else:  # If the letter is in an incorrect place but it is in the final word
+                        if letter not in self.correct_places:
+                            self.incorrect_places.add(letter)
 
-                else:
+                        color_fore = Fore.YELLOW
+
+                    for x in range(len(solution_word_list)):  # Remove letter from the solution word list
+                        if solution_word_list[x] == letter:
+                            solution_word_list[x] = ""
+                            break
+
+                else:  # If the letter is not in the final word
+                    self.wrong_letter.add(letter)
                     color_fore = ""
-                    if letter != EMPTY:
-                        self.wrong_letter.add(letter)
 
-                print(f'{color_fore}{word[i]}', end=" ")
+                print(f'{color_fore}{word[i]}', end=" ")  # Print the letter
             print()
 
     def print_letters(self):

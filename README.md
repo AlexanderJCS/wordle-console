@@ -1,5 +1,5 @@
 # wordle-console
-A clone of wordle, but in a console
+A wordle clone in the Python console
 
 How to setup:
 1. Download the files of the repo (git clone https://github.com/Tortle6/wordle-console.git)
